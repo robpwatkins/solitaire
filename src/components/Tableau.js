@@ -1,11 +1,25 @@
-import React from 'react';
-import Card from '../components/Card';
+import React, { useState } from 'react';
+import Card from './Card';
 
 const Tableau = (props) => {
-  console.log(props.topCard.rank);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    props.setOrigin(props.topCard);
+  }
+
+  // console.log(isClicked);
   return (
-    <div className={props.cards ? "tableau" : "tableau empty"}>
-      <Card card={props.topCard} />
+    <div 
+      className={!isClicked ? "tableau" : "tableau clicked"}
+      onClick={handleClick}
+    >
+      <Card 
+        name={props.name}  
+        card={props.topCard} 
+        clickedCards={props.clickedCards}
+        setClickedCards={props.setClickedCards}
+      />
     </div>
   )
 }

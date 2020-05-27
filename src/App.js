@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import Solitaire from './components/Solitaire';
 
 function App() {
-  
+
   const deckBuilder = () => {
     let buildDeck = [];
     for (let i = 0; i <= 3; i++) {
