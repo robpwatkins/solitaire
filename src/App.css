@@ -1,38 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: #50d890;
   min-height: 100vh;
+  flex-direction: column;
+}
+
+.solitaire {
+  display: grid;
+  width: 100vw;
+  height: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 15px;
+  padding: 25px;
+}
+
+.card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
+  height: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+  padding: 12px;
+  font-size: 21px;
+  color: black;
+  background: whitesmoke;
+  border-radius: 7px;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }
 
-.App-link {
-  color: #61dafb;
+.clicked {
+  /* box-shadow: 0 0 0 5px #f4e04d; */
+  box-shadow: 0 0 0 5px #fbe555;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.deck {
+  grid-column: 1 / 2;
+  height: 200px;
+  border: 3px solid black;
+  background: #81f5ff;
+  border-radius: 10px;
+}
+
+.waste {
+  grid-column: 2 / 3;
+  height: 200px;
+  /* background: #48c281; */
+  border-radius: 10px;
+}
+
+.foundation {
+  height: 200px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+
+.heyoo {
+  color: hotpink;
+}
+
+.foundation {
+  grid-column: 4 / 5;
+}
+
+.foundation:nth-child(4) {
+  grid-column: 5  /6;
+}
+
+.foundation:nth-child(5) {
+  grid-column: 6 / 7;
+}
+
+.foundation:nth-child(6) {
+  grid-column: 7 / 8;
+}
+
+.tableau {
+  height: 200px;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.empty {
+  border: 2px dashed rgba(0, 0, 0, 0.459);
+}
+
+.tableau:nth-child(4) {
+  grid-column: 1 / 2;
+}
+
+.tableau:nth-child(5) {
+  grid-column: 2 / 3;
+}
+
+.tableau:nth-child(9) {
+  grid-column: 3 / 4;
+}
+
+.tableau:nth-child(10) {
+  grid-column: 4 / 5;
+}
+
+.tableau:nth-child(11) {
+  grid-column: 5 / 6;
+}
+
+.tableau:nth-child(12) {
+  grid-column: 6 / 7;
+}
+
+.tableau:nth-child(13) {
+  grid-column: 7 / 8;
 }
