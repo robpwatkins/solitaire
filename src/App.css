@@ -60,7 +60,7 @@
 
 .foundation {
   height: 200px;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   border-radius: 10px;
 }
 

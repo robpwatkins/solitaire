@@ -5,7 +5,6 @@ const Card = (props) => {
   return (
     <div 
       className="card"
-      value={props.name}
     >
       {props.card.rank} of {props.card.suit}
     </div>

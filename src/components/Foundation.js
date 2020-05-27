@@ -1,9 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Card from './Card';
 
 const Foundation = (props) => {
-  return (
-    <div className={props.cards ? "foundation" : "foundation empty"}>
+  const [isOrigin, setIsOrigin] = useState();
+  const [/* isDestination */, setIsDestination] = useState();
+  const {
+    cards,
+    originCard,
+    setOriginCard,
+    setDestination,
+    setDestinationCard,
+  } = props;
 
+  const handleClick = () => {
+    if (!originCard) {
+      if (cards.length === 0) {
+        return;
+      } else {
+        setOriginCard(cards[cards.length - 1]);
+        setIsOrigin(true);
+      }
+    } else
+    if (originCard && !isOrigin) {
+      if (cards.length === 0) {
+        setDestination('foundation-empty');
+      } else {
+        setDestinationCard(cards[cards.length - 1]);
+        setDestination('foundation');
+        setIsDestination(true);
+      }
+    } else
+    if (origin && isOrigin) {
+      setOriginCard(null);
+      setIsOrigin(false);
+    }
+  }
+
+  let fndClass = [
+    'foundation',
+    isOrigin && 'clicked',
+    cards.length === 0 && 'empty'
+  ]
+  fndClass = fndClass.join(' ');
+  // console.log(cards.length);
+  return (
+    <div 
+      className={fndClass}
+      onClick={handleClick}
+    >
+      {cards.length > 0 && (
+        <Card card={cards[cards.length - 1]} />
+      )}
     </div>
   )
 }

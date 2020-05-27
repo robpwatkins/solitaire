@@ -6,10 +6,8 @@ import Tableau from './Tableau';
 
 const Solitaire = ({ deck }) => {
   const [tableau1, setTableau1] = useState([deck[0]]);
-  const [tbl1TopCard, /* setTbl1TopCard */] = useState(tableau1[tableau1.length - 1]);
   const [tableau2, setTableau2] = useState([deck[1], deck[7]]);
-  const [tbl2TopCard, /* setTbl2TopCard */] = useState(tableau2[tableau2.length - 1]);
-  // const [tableau3, setTableau3] = useState([deck[2], deck[8], deck[13]]);
+  const [tableau3, setTableau3] = useState([/* deck[2], deck[8], deck[13] */{rank: 7, suit: 'Hearts!'}]);
   // const [tbl3TopCard, setTbl3TopCard] = useState(tableau3[tableau3.length - 1]);
   // const [tableau4, setTableau4] = useState([deck[3], deck[9], deck[14], deck[18]]);
   // const [tbl4TopCard, setTbl4TopCard] = useState(tableau4[tableau4.length - 1]);
@@ -19,98 +17,171 @@ const Solitaire = ({ deck }) => {
   // const [tbl6TopCard, setTbl6TopCard] = useState(tableau6[tableau6.length - 1]);
   // const [tableau7, setTableau7] = useState([deck[6], deck[12], deck[17], deck[21], deck[24], deck[26], deck[27]]);
   // const [tbl7TopCard, setTbl7TopCard] = useState(tableau7[tableau7.length - 1]);
-  const [clickedCards, setClickedCards] = useState([]);
-  const [origin, setOrigin] = useState(null);
+  const [foundation1, setFoundation1] = useState([/* {rank: 7, suit: 'Diamonds!'} */]);
+  const [originCard, setOriginCard] = useState(null);
+  const [destinationCard, setDestinationCard] = useState(null);
   const [destination, setDestination] = useState(null);
   const [moveSuccessful, setMoveSuccessful] = useState(false);
   
   useEffect(() => {
-    // console.log(origin);
-  }, [origin]);
+    if (originCard && !destinationCard) {
+      if (destination === 'foundation-empty') {
+        if (originCard.rank === 1) {
+          setMoveSuccessful(true);
+          setOriginCard(null);
+          setDestination(null);
+        } else {
+          setOriginCard(null);
+          setDestination(null);
+        }
+      } else
+      if (destination === 'tableau-empty') {
+        if (originCard.rank === 13) {
+          setMoveSuccessful(true);
+          setOriginCard(null);
+          setDestination(null);
+        } else {
+          setOriginCard(null);
+          setDestination(null);
+        }
+      }
+    } else
+    if (originCard && destinationCard) {
+      if (destination === 'foundation') {
+        if (originCard.rank === destinationCard.rank + 1) {
+          let originColor, destinationColor;
+          if (originCard.suit === 'Hearts!' || originCard.suit === 'Diamonds!') {
+            originColor = 'r';
+          } else originColor = 'b';
+          if (destinationCard.suit === 'Hearts!' || destinationCard.suit === 'Diamonds!') {
+            destinationColor = 'r';
+          } else destinationColor = 'b';
+          if (originColor !== destinationColor) {
+            setMoveSuccessful(true);
+            setOriginCard(null);
+            setDestinationCard(null);
+            setDestination(null);
+          } else {
+            setOriginCard(null);
+            setDestinationCard(null);
+            setDestination(null);
+          }
+        } else {
+          setOriginCard(null);
+          setDestinationCard(null);
+          setDestination(null);
+        }
+      }
+      if (destination === 'tableau') {
+        if (originCard.rank === destinationCard.rank - 1) {
+          let originColor, destinationColor;
+          if (originCard.suit === 'Hearts!' || originCard.suit === 'Diamonds!') {
+            originColor = 'r';
+          } else originColor = 'b';
+          if (destinationCard.suit === 'Hearts!' || destinationCard.suit === 'Diamonds!') {
+            destinationColor = 'r';
+          } else destinationColor = 'b';
+          if (originColor !== destinationColor) {
+            setMoveSuccessful(true);
+            setOriginCard(null);
+            setDestinationCard(null);
+            setDestination(null);
+          } else {
+            setOriginCard(null);
+            setDestinationCard(null);
+            setDestination(null);
+          }
+        } else {
+          setOriginCard(null);
+          setDestinationCard(null);
+          setDestination(null);
+        }
+      }
+    }
+  }, [originCard, destination, destinationCard]);
 
   const handleClick = event => {
-    let targetVal = event.target.getAttribute('value');
-    console.log(targetVal);
+    // let targetVal = event.target.getAttribute('class');
+    // console.log(targetVal);
   }
 
-  console.log(origin, destination);
+  console.log(originCard, destinationCard, destination, moveSuccessful);
   return (
     <div className="solitaire" onClick={event => handleClick(event)}>
       <Stock />
       <Waste />
-      <Foundation />
-      <Foundation />
-      <Foundation />
-      <Foundation />
-      <Tableau 
-        className="tableau1"
-        name="tableau1"
-        cards={tableau1}
-        setCards={setTableau1}
-        topCard={tbl1TopCard}
-        origin={origin}
-        setOrigin={setOrigin}
-        destination={destination}
+      <Foundation 
+        cards={foundation1}
+        setCards={setFoundation1}
+        originCard={originCard}
+        setOriginCard={setOriginCard}
         setDestination={setDestination}
-        clickedCards={clickedCards}
-        setClickedCards={setClickedCards}
+        setDestinationCard={setDestinationCard}
+      />
+      {/* <Foundation />
+      <Foundation />
+      <Foundation /> */}
+      <Tableau 
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        cards={tableau1}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        // setCards={setTableau1}
+        // destinationCard={destinationCard}
+        // originCardriginCard       // setClickedCards={setClickedCards}
       />
       <Tableau 
-        name="tableau2"
-        cards={tableau2} 
-        setCards={setTableau2}
-        topCard={tbl2TopCard}
-        origin={origin}
-        setOrigin={setOrigin}
-        destination={destination}
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        cards={tableau2}
         setDestination={setDestination}
-        clickedCards={clickedCards}
-        setClickedCards={setClickedCards}
+        setDestinationCard={setDestinationCard}
+        // setCards={setTableau1}
+        // destinationCard={destinationCard}
+        // originCardriginCard       // setClickedCards={setClickedCards}
+      />
+      <Tableau 
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        cards={tableau3}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        // setCards={setTableau1}
+        // destinationCard={destinationCard}
+        // originCardriginCard       // setClickedCards={setClickedCards}
       />
       {/* <Tableau 
-        name="tableau3"
-        cards={tableau3}
-        topCard={tbl3TopCard}
-        origin={origin}
-        setOrigin={setOrigin}
-        clickedCards={clickedCards}
-        setClickedCards={setClickedCards}
-      />
-      <Tableau 
         name="tableau4"
         cards={tableau4} 
         topCard={tbl4TopCard}
-        origin={origin}
-        setOrigin={setOrigin}
-        clickedCards={clickedCards}
-        setClickedCards={setClickedCards}
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        originCardriginCard       setClickedCards={setClickedCards}
       />
       <Tableau 
         name="tableau5"
         cards={tableau5} 
         topCard={tbl5TopCard}
-        origin={origin}
-        setOrigin={setOrigin}
-        clickedCards={clickedCards}
-        setClickedCards={setClickedCards}
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        originCardriginCard       setClickedCards={setClickedCards}
       />
       <Tableau 
         name="tableau6"
         cards={tableau6} 
         topCard={tbl6TopCard}
-        origin={origin}
-        setOrigin={setOrigin}
-        clickedCards={clickedCards}
-        setClickedCards={setClickedCards}
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        originCardriginCard       setClickedCards={setClickedCards}
       />
       <Tableau 
         name="tableau7"
         cards={tableau7}
         topCard={tbl7TopCard}
-        origin={origin}
-        setOrigin={setOrigin}
-        clickedCards={clickedCards}
-        setClickedCards={setClickedCards}
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        originCardriginCard       setClickedCards={setClickedCards}
       /> */}
     </div>
   )
