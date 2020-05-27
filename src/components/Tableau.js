@@ -1,24 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
-const Tableau = (props) => {
-  const [isClicked, setIsClicked] = useState(false);
+const Tableau = ({ origin, setOrigin, destination, setDestination, name, cards, setCards, clickedCards, setClickedCards, topCard }) => {
+  const [isOrigin, setIsOrigin] = useState(false);
+  const [isDestination, setIsDestination] = useState(false);
+
+  useEffect(() => {
+
+  })
 
   const handleClick = () => {
-    props.setOrigin(props.topCard);
+    if (!origin) {
+      setOrigin(topCard);
+      setIsOrigin(true);
+    }
+    if (origin && !isOrigin) {
+      setDestination(topCard);
+      setIsDestination(true);
+    }
+    if (origin && isOrigin) {
+      setOrigin(null);
+      setIsOrigin(false);
+    }
   }
-
-  // console.log(isClicked);
+  // console.log(name, isDestination);
   return (
     <div 
-      className={!isClicked ? "tableau" : "tableau clicked"}
+      className={!isOrigin ? "tableau" : "tableau clicked"}
       onClick={handleClick}
     >
       <Card 
-        name={props.name}  
-        card={props.topCard} 
-        clickedCards={props.clickedCards}
-        setClickedCards={props.setClickedCards}
+        name={name}  
+        card={cards[cards.length - 1]} 
+        clickedCards={clickedCards}
+        setClickedCards={setClickedCards}
       />
     </div>
   )

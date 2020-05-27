@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Card = (props) => {
-  // console.log(origin, destination, props.clickedCards);
+  // console.log(props.card);
   return (
     <div 
       className="card"
