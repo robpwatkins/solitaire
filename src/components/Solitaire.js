@@ -31,7 +31,7 @@ const Solitaire = ({ deck }) => {
           // setOriginCard(null);
           setDestination(null);
         } else {
-          setOriginCard(null);
+          // setOriginCard(null);
           setDestination(null);
         }
       } else
@@ -41,7 +41,7 @@ const Solitaire = ({ deck }) => {
           // setOriginCard(null);
           setDestination(null);
         } else {
-          setOriginCard(null);
+          // setOriginCard(null);
           setDestination(null);
         }
       }
@@ -99,7 +99,7 @@ const Solitaire = ({ deck }) => {
       }
     }
   }, [originCard, destination, destinationCard]);
-
+  console.log(destination);
   const handleClick = event => {
   }
 
@@ -124,6 +124,7 @@ const Solitaire = ({ deck }) => {
       <Foundation /> */}
       <Tableau
         name="tableau1"
+        destination={destination}
         originCard={originCard}
         setOriginCard={setOriginCard}
         cards={tableau1}

@@ -20,6 +20,9 @@ const Foundation = (props) => {
     if (!originCard && isOrigin) {
       setIsOrigin(false);
     }
+    if (!originCard && isDestination) {
+      setIsDestination(false);
+    }
     if (moveSuccessful && isOrigin) {
       let newCards = cards;
       newCards.pop();
@@ -65,7 +68,7 @@ const Foundation = (props) => {
     cards.length === 0 && 'empty'
   ]
   fndClass = fndClass.join(' ');
-  console.log(isDestination);
+  // console.log(isDestination);
   return (
     <div 
       className={fndClass}
