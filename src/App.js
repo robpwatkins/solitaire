@@ -3,9 +3,8 @@ import './App.css';
 import Solitaire from './components/Solitaire';
 
 function App() {
-  const [deck, setDeck] = useState([]);
-
-  useEffect(() => {
+  
+  const deckBuilder = () => {
     let buildDeck = [];
     for (let i = 0; i <= 3; i++) {
       let card = {};
@@ -23,17 +22,18 @@ function App() {
         suit = 'Hearts!';
       }
       for (let j = 1; j <= 13; j++) {
+        card = {};
         card.rank = j;
         card.suit = suit;
         buildDeck.push(card);
       }
     }
-    setDeck(...deck, buildDeck);
-  }, [])
-  console.log(deck);
+    return buildDeck;
+  }
+
   return (
     <div className="App">
-      <Solitaire />
+      <Solitaire deck={deckBuilder()} />
     </div>
   );
 }
