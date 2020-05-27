@@ -109,13 +109,15 @@ const Solitaire = ({ deck }) => {
       <Stock />
       <Waste />
       <Foundation 
-        cards={foundation1}
-        setCards={setFoundation1}
+        name="foundation1"
         originCard={originCard}
         setOriginCard={setOriginCard}
+        cards={foundation1}
+        setCards={setFoundation1}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
-
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
       />
       {/* <Foundation />
       <Foundation />
