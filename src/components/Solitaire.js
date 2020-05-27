@@ -28,7 +28,7 @@ const Solitaire = ({ deck }) => {
       if (destination === 'foundation-empty') {
         if (originCard.rank === 1) {
           setMoveSuccessful(true);
-          setOriginCard(null);
+          // setOriginCard(null);
           setDestination(null);
         } else {
           setOriginCard(null);
@@ -38,7 +38,7 @@ const Solitaire = ({ deck }) => {
       if (destination === 'tableau-empty') {
         if (originCard.rank === 13) {
           setMoveSuccessful(true);
-          setOriginCard(null);
+          // setOriginCard(null);
           setDestination(null);
         } else {
           setOriginCard(null);
@@ -58,7 +58,7 @@ const Solitaire = ({ deck }) => {
           } else destinationColor = 'b';
           if (originColor !== destinationColor) {
             setMoveSuccessful(true);
-            setOriginCard(null);
+            // setOriginCard(null);
             setDestinationCard(null);
             setDestination(null);
           } else {
@@ -83,7 +83,7 @@ const Solitaire = ({ deck }) => {
           } else destinationColor = 'b';
           if (originColor !== destinationColor) {
             setMoveSuccessful(true);
-            setOriginCard(null);
+            // setOriginCard(null);
             setDestinationCard(null);
             setDestination(null);
           } else {
@@ -101,11 +101,9 @@ const Solitaire = ({ deck }) => {
   }, [originCard, destination, destinationCard]);
 
   const handleClick = event => {
-    // let targetVal = event.target.getAttribute('class');
-    // console.log(targetVal);
   }
 
-  console.log(originCard, destinationCard, destination, moveSuccessful);
+  // console.log(originCard, destinationCard, destination, moveSuccessful);
   return (
     <div className="solitaire" onClick={event => handleClick(event)}>
       <Stock />
@@ -117,39 +115,52 @@ const Solitaire = ({ deck }) => {
         setOriginCard={setOriginCard}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
+
       />
       {/* <Foundation />
       <Foundation />
       <Foundation /> */}
-      <Tableau 
+      <Tableau
+        name="tableau1"
         originCard={originCard}
         setOriginCard={setOriginCard}
         cards={tableau1}
+        setCards={setTableau1}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
         // setCards={setTableau1}
         // destinationCard={destinationCard}
-        // originCardriginCard       // setClickedCards={setClickedCards}
+        // originCardriginCard
       />
       <Tableau 
+        name="tableau2"
         originCard={originCard}
         setOriginCard={setOriginCard}
         cards={tableau2}
+        setCards={setTableau2}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
         // setCards={setTableau1}
         // destinationCard={destinationCard}
-        // originCardriginCard       // setClickedCards={setClickedCards}
+        // originCardriginCard
       />
       <Tableau 
+        name="tableu3"
         originCard={originCard}
         setOriginCard={setOriginCard}
         cards={tableau3}
+        setCards={setTableau3}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
         // setCards={setTableau1}
         // destinationCard={destinationCard}
-        // originCardriginCard       // setClickedCards={setClickedCards}
+        // originCardriginCard
       />
       {/* <Tableau 
         name="tableau4"
