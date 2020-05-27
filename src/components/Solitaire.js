@@ -7,7 +7,7 @@ import Tableau from './Tableau';
 const Solitaire = ({ deck }) => {
   const [tableau1, setTableau1] = useState([deck[0]]);
   const [tableau2, setTableau2] = useState([deck[1], deck[7]]);
-  const [tableau3, setTableau3] = useState([/* deck[2], deck[8], deck[13] */{rank: 7, suit: 'Hearts!'}]);
+  const [tableau3, setTableau3] = useState([/* deck[2], deck[8], deck[13] */{rank: 2, suit: 'Hearts!'}, {rank: 7, suit: 'Hearts!'}]);
   // const [tbl3TopCard, setTbl3TopCard] = useState(tableau3[tableau3.length - 1]);
   // const [tableau4, setTableau4] = useState([deck[3], deck[9], deck[14], deck[18]]);
   // const [tbl4TopCard, setTbl4TopCard] = useState(tableau4[tableau4.length - 1]);

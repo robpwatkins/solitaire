@@ -17,13 +17,16 @@ const Tableau = (props) => {
   } = props;
 
   useEffect(() => {
+    if (!originCard && isDestination) {
+      setIsDestination(false);
+    }
     if (!originCard && isOrigin) {
       setIsOrigin(false);
     }
     if (moveSuccessful && isOrigin) {
       let newCards = cards;
       newCards.pop();
-      setCards(...cards, newCards);
+      setCards(newCards);
       setMoveSuccessful(false);
       setIsOrigin(false);
     } else
@@ -60,7 +63,7 @@ const Tableau = (props) => {
     cards.length === 0 && 'empty'
   ]
   tblClass = tblClass.join(' ')
-  // console.log(name, cards, moveSuccessful, originCard);
+  console.log(name, cards);
   return (
     <div 
       className={tblClass}
