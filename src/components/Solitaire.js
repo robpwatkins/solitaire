@@ -22,7 +22,6 @@ const Solitaire = ({ deck }) => {
   const [destinationCard, setDestinationCard] = useState(null);
   const [destination, setDestination] = useState(null);
   const [moveSuccessful, setMoveSuccessful] = useState(false);
-  const [stockIsClicked, setStockIsClicked] = useState(false);
   
   useEffect(() => {
     let pile1 = [];
@@ -65,7 +64,7 @@ const Solitaire = ({ deck }) => {
     setTableau6(tableau6 => tableau6 = pile6);
     setTableau7(tableau7 => tableau7 = pile7);
     setStock(stock => stock = stockStack);
-  }, []);
+  }, [deck]);
 
   useEffect(() => {
     if (originCard && !destinationCard) {
@@ -151,11 +150,12 @@ const Solitaire = ({ deck }) => {
     }
   }, [originCard, destination, destinationCard]);
 
-  console.log(stock.length, waste.length);
+  // console.log(stock.length, waste.length);
   return (
     <div className="solitaire">
       <Stock 
-        cards={stock}
+        stock={stock}
+        setStock={setStock}
         waste={waste}
         setWaste={setWaste}
       />

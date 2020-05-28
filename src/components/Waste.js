@@ -23,7 +23,7 @@ const Waste = (props) => {
       setMoveSuccessful(false);
       setIsOrigin(false);
     }
-  })
+  }, [setIsOrigin, cards, isOrigin, moveSuccessful, originCard, setCards, setMoveSuccessful]);
 
   const handleClick = () => {
     if (!originCard) {

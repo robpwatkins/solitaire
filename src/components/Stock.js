@@ -1,23 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import LoopIcon from '@material-ui/icons/Loop';
 
-const Stock = ({ cards, waste, setWaste }) => {
-
-  // useEffect(() => {
-  //   if (isClicked) {
-  //     setIsClicked(false);
-  //   }
-  // })
+const Stock = ({ stock, setStock, waste, setWaste }) => {
 
   const handleClick = () => {
-    if (cards.length === 0) return;
-    let newStock = cards;
-    setWaste([...waste, newStock.splice(cards.length - 1, 1)[0]]);
+    if (stock.length === 0) {
+      let newWaste = waste;
+      newWaste.reverse();
+      setStock(stock => stock = newWaste);
+      setWaste(waste => waste = []);
+    } else {
+      let newStock = stock;
+      setWaste([...waste, newStock.splice(stock.length - 1, 1)[0]]);
+    }
   }
 
   return (
     <div 
-      className={cards.length > 0 ? "stock" : "stock stock-empty"} 
+      className={stock.length > 0 ? "stock" : "stock stock-empty"} 
       onClick={handleClick}>
+        {stock.length === 0 && (
+          <LoopIcon className="loop" style={{fontSize: "100px"}} />
+        )}
     </div>
   )
 }

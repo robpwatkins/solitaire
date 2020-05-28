@@ -43,16 +43,25 @@
 }
 
 .stock {
+  display: flex;
   grid-column: 1 / 2;
   height: 200px;
+  justify-content: center;
+  align-items: center;
   background: #1b6ca8;
   border: 10px solid white;
   border-radius: 10px;
 }
 
 .stock-empty {
-  background: #40ad73;
-  border: 2px dashed rgba(0, 0, 0, 0.315);
+  background: #50d890;
+  border: 2px dashed rgba(0, 0, 0, 0.212);
+}
+
+.loop {
+  font-size: 100px;
+  color: #46be7e;
+  transform: scaleX(-1)
 }
 
 .waste {
@@ -80,7 +89,7 @@
 }
 
 .empty {
-  border: 2px dashed rgba(0, 0, 0, 0.315);
+  border: 2px dashed rgba(0, 0, 0, 0.212);
 }
 
 .origin {
