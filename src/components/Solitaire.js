@@ -97,13 +97,10 @@ const Solitaire = ({ deck }) => {
       }
     }
   }, [originCard, destination, destinationCard]);
-  // console.log(destination, moveSuccessful);
-  const handleClick = event => {
-  }
 
   console.log(originCard, destinationCard, destination, moveSuccessful);
   return (
-    <div className="solitaire" onClick={event => handleClick(event)}>
+    <div className="solitaire">
       <Stock />
       <Waste />
       <Foundation 

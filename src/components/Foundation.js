@@ -64,16 +64,13 @@ const Foundation = (props) => {
 
   let fndClass = [
     'foundation',
-    isOrigin && 'clicked',
+    isOrigin && 'origin',
     cards.length === 0 && 'empty'
   ]
   fndClass = fndClass.join(' ');
-  // console.log(isDestination);
+
   return (
-    <div 
-      className={fndClass}
-      onClick={handleClick}
-    >
+    <div className={fndClass} onClick={handleClick}>
       {cards.length > 0 && (
         <Card card={cards[cards.length - 1]} />
       )}

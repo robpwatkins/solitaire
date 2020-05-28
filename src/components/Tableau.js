@@ -6,7 +6,6 @@ const Tableau = (props) => {
   const [isDestination, setIsDestination] = useState(false);
   const {
     name,
-    destination,
     originCard,
     setOriginCard,
     cards,
@@ -61,22 +60,15 @@ const Tableau = (props) => {
   
   let tblClass = [
     'tableau',
-    isOrigin && 'clicked',
+    isOrigin && 'origin',
     cards.length === 0 && 'empty'
   ]
   tblClass = tblClass.join(' ')
-  console.log(name, cards, moveSuccessful);
+
   return (
-    <div 
-      className={tblClass}
-      onClick={handleClick}
-    >
+    <div className={tblClass} onClick={handleClick}>
       {cards.length > 0 && (
-        <Card 
-          card={cards[cards.length - 1]} 
-          // clickedCards={clickedCards}
-          // setClickedCards={setClickedCards}
-        />
+        <Card card={cards[cards.length - 1]} />
       )}
     </div>
   )
