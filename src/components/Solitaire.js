@@ -7,17 +7,15 @@ import Tableau from './Tableau';
 const Solitaire = ({ deck }) => {
   const [tableau1, setTableau1] = useState([deck[0]]);
   const [tableau2, setTableau2] = useState([deck[1], deck[7]]);
-  const [tableau3, setTableau3] = useState([/* deck[2], deck[8], deck[13] */{rank: 2, suit: 'Hearts!'}, {rank: 7, suit: 'Hearts!'}]);
-  // const [tbl3TopCard, setTbl3TopCard] = useState(tableau3[tableau3.length - 1]);
-  // const [tableau4, setTableau4] = useState([deck[3], deck[9], deck[14], deck[18]]);
-  // const [tbl4TopCard, setTbl4TopCard] = useState(tableau4[tableau4.length - 1]);
-  // const [tableau5, setTableau5] = useState([deck[4], deck[10], deck[15], deck[19], deck[22]]);
-  // const [tbl5TopCard, setTbl5TopCard] = useState(tableau5[tableau5.length - 1]);
-  // const [tableau6, setTableau6] = useState([deck[5], deck[11], deck[16], deck[20], deck[23], deck[25]]);
-  // const [tbl6TopCard, setTbl6TopCard] = useState(tableau6[tableau6.length - 1]);
-  // const [tableau7, setTableau7] = useState([deck[6], deck[12], deck[17], deck[21], deck[24], deck[26], deck[27]]);
-  // const [tbl7TopCard, setTbl7TopCard] = useState(tableau7[tableau7.length - 1]);
-  const [foundation1, setFoundation1] = useState([/* {rank: 7, suit: 'Diamonds!'} */]);
+  const [tableau3, setTableau3] = useState([deck[2], deck[8], deck[13]]);
+  const [tableau4, setTableau4] = useState([deck[3], deck[9], deck[14], deck[18]]);
+  const [tableau5, setTableau5] = useState([deck[4], deck[10], deck[15], deck[19], deck[22]]);
+  const [tableau6, setTableau6] = useState([deck[5], deck[11], deck[16], deck[20], deck[23], deck[25]]);
+  const [tableau7, setTableau7] = useState([deck[6], deck[12], deck[17], deck[21], deck[24], deck[26], deck[27]]);
+  const [foundation1, setFoundation1] = useState([]);
+  const [foundation2, setFoundation2] = useState([]);
+  const [foundation3, setFoundation3] = useState([]);
+  const [foundation4, setFoundation4] = useState([]);
   const [originCard, setOriginCard] = useState(null);
   const [destinationCard, setDestinationCard] = useState(null);
   const [destination, setDestination] = useState(null);
@@ -56,13 +54,13 @@ const Solitaire = ({ deck }) => {
           if (destinationCard.suit === 'Hearts!' || destinationCard.suit === 'Diamonds!') {
             destinationColor = 'r';
           } else destinationColor = 'b';
-          if (originColor !== destinationColor) {
+          if (originColor === destinationColor) {
             setMoveSuccessful(true);
             // setOriginCard(null);
             setDestinationCard(null);
             setDestination(null);
           } else {
-            setOriginCard(null);
+            // setOriginCard(null);
             setDestinationCard(null);
             setDestination(null);
           }
@@ -99,11 +97,11 @@ const Solitaire = ({ deck }) => {
       }
     }
   }, [originCard, destination, destinationCard]);
-  console.log(destination);
+  // console.log(destination, moveSuccessful);
   const handleClick = event => {
   }
 
-  // console.log(originCard, destinationCard, destination, moveSuccessful);
+  console.log(originCard, destinationCard, destination, moveSuccessful);
   return (
     <div className="solitaire" onClick={event => handleClick(event)}>
       <Stock />
@@ -119,12 +117,41 @@ const Solitaire = ({ deck }) => {
         moveSuccessful={moveSuccessful}
         setMoveSuccessful={setMoveSuccessful}
       />
-      {/* <Foundation />
-      <Foundation />
-      <Foundation /> */}
+      <Foundation 
+        name="foundation2"
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        cards={foundation2}
+        setCards={setFoundation2}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
+      />
+      <Foundation 
+        name="foundation3"
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        cards={foundation3}
+        setCards={setFoundation3}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
+      />
+      <Foundation 
+        name="foundation4"
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        cards={foundation4}
+        setCards={setFoundation4}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
+      />
       <Tableau
         name="tableau1"
-        destination={destination}
         originCard={originCard}
         setOriginCard={setOriginCard}
         cards={tableau1}
@@ -133,9 +160,6 @@ const Solitaire = ({ deck }) => {
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
         setMoveSuccessful={setMoveSuccessful}
-        // setCards={setTableau1}
-        // destinationCard={destinationCard}
-        // originCardriginCard
       />
       <Tableau 
         name="tableau2"
@@ -147,9 +171,6 @@ const Solitaire = ({ deck }) => {
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
         setMoveSuccessful={setMoveSuccessful}
-        // setCards={setTableau1}
-        // destinationCard={destinationCard}
-        // originCardriginCard
       />
       <Tableau 
         name="tableu3"
@@ -161,42 +182,51 @@ const Solitaire = ({ deck }) => {
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
         setMoveSuccessful={setMoveSuccessful}
-        // setCards={setTableau1}
-        // destinationCard={destinationCard}
-        // originCardriginCard
       />
-      {/* <Tableau 
+      <Tableau 
         name="tableau4"
-        cards={tableau4} 
-        topCard={tbl4TopCard}
         originCard={originCard}
         setOriginCard={setOriginCard}
-        originCardriginCard       setClickedCards={setClickedCards}
+        cards={tableau4}
+        setCards={setTableau4}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
       />
       <Tableau 
         name="tableau5"
-        cards={tableau5} 
-        topCard={tbl5TopCard}
         originCard={originCard}
         setOriginCard={setOriginCard}
-        originCardriginCard       setClickedCards={setClickedCards}
+        cards={tableau5}
+        setCards={setTableau5}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
       />
       <Tableau 
         name="tableau6"
-        cards={tableau6} 
-        topCard={tbl6TopCard}
         originCard={originCard}
         setOriginCard={setOriginCard}
-        originCardriginCard       setClickedCards={setClickedCards}
+        cards={tableau6}
+        setCards={setTableau6}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
       />
       <Tableau 
         name="tableau7"
-        cards={tableau7}
-        topCard={tbl7TopCard}
         originCard={originCard}
         setOriginCard={setOriginCard}
-        originCardriginCard       setClickedCards={setClickedCards}
-      /> */}
+        cards={tableau7}
+        setCards={setTableau7}
+        setDestination={setDestination}
+        setDestinationCard={setDestinationCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
+      />
     </div>
   )
 }
