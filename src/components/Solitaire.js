@@ -4,14 +4,16 @@ import Waste from './Waste';
 import Foundation from './Foundation';
 import Tableau from './Tableau';
 
-const Solitaire = ({ deck }) => {
-  const [tableau1, setTableau1] = useState([deck[0]]);
-  const [tableau2, setTableau2] = useState([deck[1], /* deck[7] */{rank: 2, suit: 'Clubs'}]);
-  const [tableau3, setTableau3] = useState([deck[2], deck[8], deck[13]]);
-  const [tableau4, setTableau4] = useState([deck[3], deck[9], deck[14], deck[18]]);
-  const [tableau5, setTableau5] = useState([deck[4], deck[10], deck[15], deck[19], deck[22]]);
-  const [tableau6, setTableau6] = useState([deck[5], deck[11], deck[16], deck[20], deck[23], deck[25]]);
-  const [tableau7, setTableau7] = useState([deck[6], deck[12], deck[17], deck[21], deck[24], deck[26], deck[27]]);
+const Solitaire = (props) => {
+  const [deck, setDeck] = useState(props.deckBuilder());
+  const [stock, setStock] = useState([]);
+  const [tableau1, setTableau1] = useState([]);
+  const [tableau2, setTableau2] = useState([]);
+  const [tableau3, setTableau3] = useState([/* deck[2], deck[8], deck[13] */]);
+  const [tableau4, setTableau4] = useState([/* deck[3], deck[9], deck[14], deck[18] */]);
+  const [tableau5, setTableau5] = useState([/* deck[4], deck[10], deck[15], deck[19], deck[22] */]);
+  const [tableau6, setTableau6] = useState([/* deck[5], deck[11], deck[16], deck[20], deck[23], deck[25] */]);
+  const [tableau7, setTableau7] = useState([/* deck[6], deck[12], deck[17], deck[21], deck[24], deck[26], deck[27] */]);
   const [foundation1, setFoundation1] = useState([]);
   const [foundation2, setFoundation2] = useState([]);
   const [foundation3, setFoundation3] = useState([]);
@@ -20,7 +22,50 @@ const Solitaire = ({ deck }) => {
   const [destinationCard, setDestinationCard] = useState(null);
   const [destination, setDestination] = useState(null);
   const [moveSuccessful, setMoveSuccessful] = useState(false);
-  
+
+  useEffect(() => {
+    let pile1 = [];
+    let pile2 = [];
+    let pile3 = [];
+    let pile4 = [];
+    let pile5 = [];
+    let pile6 = [];
+    let pile7 = [];
+    let stockStack = [];
+    for (let i = 0; i < 1; i++) {
+      pile1.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);
+    }
+    for (let i = 0; i < 2; i++) {
+      pile2.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);
+    }
+    for (let i = 0; i < 3; i++) {
+      pile3.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);  
+    }
+    for (let i = 0; i < 4; i++) {
+      pile4.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);  
+    }
+    for (let i = 0; i < 5; i++) {
+      pile5.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);  
+    }
+    for (let i = 0; i < 6; i++) {
+      pile6.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);  
+    }
+    for (let i = 0; i < 7; i++) {
+      pile7.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);  
+    }
+    for (let i = 0; i < 24; i++) {
+      stockStack.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]); 
+    }
+    setTableau1(tableau1 => tableau1 = pile1);
+    setTableau2(tableau2 => tableau2 = pile2);
+    setTableau3(tableau3 => tableau3 = pile3);
+    setTableau4(tableau4 => tableau4 = pile4);
+    setTableau5(tableau5 => tableau5 = pile5);
+    setTableau6(tableau6 => tableau6 = pile6);
+    setTableau7(tableau7 => tableau7 = pile7);
+    setStock(stock => stock = stockStack);
+  }, []);
+
   useEffect(() => {
     if (originCard && !destinationCard) {
       if (destination === 'foundation-empty') {
@@ -104,7 +149,7 @@ const Solitaire = ({ deck }) => {
     }
   }, [originCard, destination, destinationCard]);
 
-  // console.log(originCard, destinationCard, destination, moveSuccessful);
+  console.log(stock);
   return (
     <div className="solitaire">
       <Stock />

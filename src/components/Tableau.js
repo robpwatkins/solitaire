@@ -57,7 +57,7 @@ const Tableau = (props) => {
       setIsOrigin(false);
     }
   }
-  
+  console.log(name, cards);
   let tblClass = [
     'tableau',
     isOrigin && 'origin',
