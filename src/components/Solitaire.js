@@ -6,7 +6,7 @@ import Tableau from './Tableau';
 
 const Solitaire = ({ deck }) => {
   const [tableau1, setTableau1] = useState([deck[0]]);
-  const [tableau2, setTableau2] = useState([deck[1], deck[7]]);
+  const [tableau2, setTableau2] = useState([deck[1], /* deck[7] */{rank: 2, suit: 'Clubs'}]);
   const [tableau3, setTableau3] = useState([deck[2], deck[8], deck[13]]);
   const [tableau4, setTableau4] = useState([deck[3], deck[9], deck[14], deck[18]]);
   const [tableau5, setTableau5] = useState([deck[4], deck[10], deck[15], deck[19], deck[22]]);
@@ -24,7 +24,7 @@ const Solitaire = ({ deck }) => {
   useEffect(() => {
     if (originCard && !destinationCard) {
       if (destination === 'foundation-empty') {
-        if (originCard.rank === 1) {
+        if (originCard.rank === 'A') {
           setMoveSuccessful(true);
           // setOriginCard(null);
           setDestination(null);
@@ -34,7 +34,7 @@ const Solitaire = ({ deck }) => {
         }
       } else
       if (destination === 'tableau-empty') {
-        if (originCard.rank === 13) {
+        if (originCard.rank === 'K') {
           setMoveSuccessful(true);
           // setOriginCard(null);
           setDestination(null);
@@ -46,12 +46,16 @@ const Solitaire = ({ deck }) => {
     } else
     if (originCard && destinationCard) {
       if (destination === 'foundation') {
-        if (originCard.rank === destinationCard.rank + 1) {
+        console.log(originCard.rank, destinationCard.rank);
+        if ((originCard.rank === 2 && destinationCard.rank === 'A') ||
+        (originCard.rank === 'Q' && destinationCard.rank === 'J') ||
+        (originCard.rank === 'K' && destinationCard.rank === 'Q') ||
+        (originCard.rank === destinationCard.rank + 1)) {
           let originColor, destinationColor;
-          if (originCard.suit === 'Hearts!' || originCard.suit === 'Diamonds!') {
+          if (originCard.suit === 'Hearts' || originCard.suit === 'Diamonds') {
             originColor = 'r';
           } else originColor = 'b';
-          if (destinationCard.suit === 'Hearts!' || destinationCard.suit === 'Diamonds!') {
+          if (destinationCard.suit === 'Hearts' || destinationCard.suit === 'Diamonds') {
             destinationColor = 'r';
           } else destinationColor = 'b';
           if (originColor === destinationColor) {
@@ -71,12 +75,14 @@ const Solitaire = ({ deck }) => {
         }
       }
       if (destination === 'tableau') {
-        if (originCard.rank === destinationCard.rank - 1) {
+        if ((originCard.rank === 'J' && destinationCard.rank === 'Q') ||
+        (originCard.rank === 'Q' && destinationCard.rank === 'K') || 
+        (originCard.rank === destinationCard.rank - 1)) {
           let originColor, destinationColor;
-          if (originCard.suit === 'Hearts!' || originCard.suit === 'Diamonds!') {
+          if (originCard.suit === 'Hearts' || originCard.suit === 'Diamonds') {
             originColor = 'r';
           } else originColor = 'b';
-          if (destinationCard.suit === 'Hearts!' || destinationCard.suit === 'Diamonds!') {
+          if (destinationCard.suit === 'Hearts' || destinationCard.suit === 'Diamonds') {
             destinationColor = 'r';
           } else destinationColor = 'b';
           if (originColor !== destinationColor) {
@@ -98,7 +104,7 @@ const Solitaire = ({ deck }) => {
     }
   }, [originCard, destination, destinationCard]);
 
-  console.log(originCard, destinationCard, destination, moveSuccessful);
+  // console.log(originCard, destinationCard, destination, moveSuccessful);
   return (
     <div className="solitaire">
       <Stock />
