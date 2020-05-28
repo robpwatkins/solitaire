@@ -5,7 +5,6 @@ import Foundation from './Foundation';
 import Tableau from './Tableau';
 
 const Solitaire = ({ deck }) => {
-  const [stock, setStock] = useState([]);
   const [tableau1, setTableau1] = useState([]);
   const [tableau2, setTableau2] = useState([]);
   const [tableau3, setTableau3] = useState([]);
@@ -17,6 +16,8 @@ const Solitaire = ({ deck }) => {
   const [foundation2, setFoundation2] = useState([]);
   const [foundation3, setFoundation3] = useState([]);
   const [foundation4, setFoundation4] = useState([]);
+  const [stock, setStock] = useState([]);
+  const [waste, setWaste] = useState([]);
   const [originCard, setOriginCard] = useState(null);
   const [destinationCard, setDestinationCard] = useState(null);
   const [destination, setDestination] = useState(null);
@@ -150,16 +151,21 @@ const Solitaire = ({ deck }) => {
     }
   }, [originCard, destination, destinationCard]);
 
-  // console.log(stock);
+  console.log(stock.length, waste.length);
   return (
     <div className="solitaire">
       <Stock 
-        isClicked={stockIsClicked}
-        setIsClicked={setStockIsClicked} />
-      <Waste 
-        stockIsClicked={stockIsClicked}
         cards={stock}
-        stockLength={stock.length}
+        waste={waste}
+        setWaste={setWaste}
+      />
+      <Waste 
+        cards={waste}
+        setCards={setWaste}
+        originCard={originCard}
+        setOriginCard={setOriginCard}
+        moveSuccessful={moveSuccessful}
+        setMoveSuccessful={setMoveSuccessful}
       />
       <Foundation 
         name="foundation1"

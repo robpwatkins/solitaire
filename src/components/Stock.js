@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
 
-const Stock = ({ isClicked, setIsClicked }) => {
+const Stock = ({ cards, waste, setWaste }) => {
 
-  useEffect(() => {
-    if (isClicked) {
-      setIsClicked(false);
-    }
-  })
+  // useEffect(() => {
+  //   if (isClicked) {
+  //     setIsClicked(false);
+  //   }
+  // })
 
   const handleClick = () => {
-    setIsClicked(isClicked => isClicked = true);
+    if (cards.length === 0) return;
+    let newStock = cards;
+    setWaste([...waste, newStock.splice(cards.length - 1, 1)[0]]);
   }
 
   return (
-    <div className="stock" onClick={handleClick}>
-
+    <div 
+      className={cards.length > 0 ? "stock" : "stock stock-empty"} 
+      onClick={handleClick}>
     </div>
   )
 }

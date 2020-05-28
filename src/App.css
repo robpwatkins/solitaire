@@ -50,6 +50,11 @@
   border-radius: 10px;
 }
 
+.stock-empty {
+  background: #40ad73;
+  border: 2px dashed rgba(0, 0, 0, 0.315);
+}
+
 .waste {
   grid-column: 2 / 3;
   height: 200px;

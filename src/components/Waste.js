@@ -1,26 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
-const Waste = ({ stockIsClicked, cards, stockLength }) => {
-  const [wasteCard, setWasteCard] = useState();
-  const [cardPosition, setCardPosition] = useState(null);
-  // const [stockLength, setStockLength] = useState(23);
+const Waste = (props) => {
+  const [isOrigin, setIsOrigin] = useState(false);
+  const { 
+    cards, 
+    setCards,
+    originCard, 
+    setOriginCard, 
+    moveSuccessful, 
+    setMoveSuccessful
+  } = props;
 
   useEffect(() => {
-    setCardPosition(stockLength - 1);
-  }, [stockLength]);
-
-  useEffect(() => {
-    if (stockIsClicked) {
-      console.log(cards[cardPosition]);
-      // setWasteCard(cards[cardPosition]);
+    if (!originCard && isOrigin) {
+      setIsOrigin(false);
     }
-  }, [stockIsClicked, stockLength])
-  // console.log(cards.length, stockLength)
+    if (moveSuccessful && isOrigin) {
+      let newCards = cards;
+      newCards.pop();
+      setCards(newCards);
+      setMoveSuccessful(false);
+      setIsOrigin(false);
+    }
+  })
+
+  const handleClick = () => {
+    if (!originCard) {
+      setOriginCard(cards[cards.length - 1]);
+      setIsOrigin(true);
+    }
+    if (originCard) {
+      setOriginCard(null);
+      setIsOrigin(false);
+    }
+  }
+
+  let wasteClass = [
+    'waste',
+    isOrigin && 'origin',
+    cards.length === 0 && 'empty'
+  ];
+
+  wasteClass = wasteClass.join(' ');
+  
+  // console.log(cards)
   return (
-    <div className="waste">
-      {wasteCard && (
-        <Card card={wasteCard} />
+    <div 
+      className={wasteClass}
+      onClick={handleClick}  
+    >
+      {cards.length > 0 && (
+        <Card card={cards[cards.length - 1]} />
       )}
     </div>
   )
