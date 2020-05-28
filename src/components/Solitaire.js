@@ -21,7 +21,8 @@ const Solitaire = ({ deck }) => {
   const [destinationCard, setDestinationCard] = useState(null);
   const [destination, setDestination] = useState(null);
   const [moveSuccessful, setMoveSuccessful] = useState(false);
-
+  const [stockIsClicked, setStockIsClicked] = useState(false);
+  
   useEffect(() => {
     let pile1 = [];
     let pile2 = [];
@@ -119,7 +120,8 @@ const Solitaire = ({ deck }) => {
         }
       }
       if (destination === 'tableau') {
-        if ((originCard.rank === 'J' && destinationCard.rank === 'Q') ||
+        if ((originCard.rank === 10 && destinationCard.rank === 'J') ||
+        (originCard.rank === 'J' && destinationCard.rank === 'Q') ||
         (originCard.rank === 'Q' && destinationCard.rank === 'K') || 
         (originCard.rank === destinationCard.rank - 1)) {
           let originColor, destinationColor;
@@ -148,11 +150,17 @@ const Solitaire = ({ deck }) => {
     }
   }, [originCard, destination, destinationCard]);
 
-  console.log(stock);
+  // console.log(stock);
   return (
     <div className="solitaire">
-      <Stock />
-      <Waste />
+      <Stock 
+        isClicked={stockIsClicked}
+        setIsClicked={setStockIsClicked} />
+      <Waste 
+        stockIsClicked={stockIsClicked}
+        cards={stock}
+        stockLength={stock.length}
+      />
       <Foundation 
         name="foundation1"
         originCard={originCard}

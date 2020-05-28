@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Stock = () => {
+const Stock = ({ isClicked, setIsClicked }) => {
+
+  useEffect(() => {
+    if (isClicked) {
+      setIsClicked(false);
+    }
+  })
+
+  const handleClick = () => {
+    setIsClicked(isClicked => isClicked = true);
+  }
+
   return (
-    <div className="stock">
+    <div className="stock" onClick={handleClick}>
 
     </div>
   )
