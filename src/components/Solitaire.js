@@ -4,16 +4,15 @@ import Waste from './Waste';
 import Foundation from './Foundation';
 import Tableau from './Tableau';
 
-const Solitaire = (props) => {
-  const [deck, setDeck] = useState(props.deckBuilder());
+const Solitaire = ({ deck }) => {
   const [stock, setStock] = useState([]);
   const [tableau1, setTableau1] = useState([]);
   const [tableau2, setTableau2] = useState([]);
-  const [tableau3, setTableau3] = useState([/* deck[2], deck[8], deck[13] */]);
-  const [tableau4, setTableau4] = useState([/* deck[3], deck[9], deck[14], deck[18] */]);
-  const [tableau5, setTableau5] = useState([/* deck[4], deck[10], deck[15], deck[19], deck[22] */]);
-  const [tableau6, setTableau6] = useState([/* deck[5], deck[11], deck[16], deck[20], deck[23], deck[25] */]);
-  const [tableau7, setTableau7] = useState([/* deck[6], deck[12], deck[17], deck[21], deck[24], deck[26], deck[27] */]);
+  const [tableau3, setTableau3] = useState([]);
+  const [tableau4, setTableau4] = useState([]);
+  const [tableau5, setTableau5] = useState([]);
+  const [tableau6, setTableau6] = useState([]);
+  const [tableau7, setTableau7] = useState([]);
   const [foundation1, setFoundation1] = useState([]);
   const [foundation2, setFoundation2] = useState([]);
   const [foundation3, setFoundation3] = useState([]);

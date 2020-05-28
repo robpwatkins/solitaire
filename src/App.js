@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Solitaire from './components/Solitaire';
 
 function App() {
+  const [deck, setDeck] = useState([]);
+
+  useState(() => {
+    setDeck(deck => deck = deckBuilder());
+  })
 
   const deckBuilder = () => {
     let buildDeck = [];
@@ -24,7 +29,7 @@ function App() {
   // console.log(deck);
   return (
     <div className="App">
-      <Solitaire deckBuilder={deckBuilder} />
+      <Solitaire deck={deck} />
     </div>
   );
 }
