@@ -7,7 +7,7 @@ const Topmost = ({ topmost, isOrigin, name }) => {
     "topmost",
     isOrigin && "origin",
     name === "top" && name,
-    name ==="notTop" && name
+    name ==="bottom" && name
   ];
   topClass = topClass.join(' ');
   // console.log('Topmost', topmost);
