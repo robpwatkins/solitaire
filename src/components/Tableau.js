@@ -62,7 +62,6 @@ const Tableau = (props) => {
   console.log(name, cards);
   let tblClass = [
     'tableau',
-    isOrigin && 'origin',
     cards.length === 0 && 'empty'
   ]
   tblClass = tblClass.join(' ')
@@ -74,7 +73,10 @@ const Tableau = (props) => {
           {cards.map((card) => {
             return <Stack />
           })}
-          <Topmost topmost={cards[cards.length - 1]} />
+          <Topmost 
+            topmost={cards[cards.length - 1]} 
+            isOrigin={isOrigin}
+          />
           {/* <Card card={cards[cards.length - 1]} /> */}
         </div>
       )}
