@@ -4,6 +4,7 @@ import Card from './Card';
 const Tableau = (props) => {
   const [isOrigin, setIsOrigin] = useState(false);
   const [isDestination, setIsDestination] = useState(false);
+  // const [topMost, setTopMost] = useState([]);
   const {
     name,
     originCard,
@@ -68,7 +69,9 @@ const Tableau = (props) => {
   return (
     <div className={tblClass} onClick={handleClick}>
       {cards.length > 0 && (
-        <Card card={cards[cards.length - 1]} />
+        <>
+          <Card card={cards[cards.length - 1]} />
+        </>
       )}
     </div>
   )
