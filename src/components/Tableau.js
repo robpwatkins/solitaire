@@ -71,9 +71,10 @@ const Tableau = (props) => {
     <div className={tblClass} onClick={handleClick}>
       {cards.length > 0 && (
         <div className="tableau">
-          <Stack />
-          <Stack />
-          {/* <Topmost topmost={cards[cards.length - 1]} /> */}
+          {cards.map((card) => {
+            return <Stack />
+          })}
+          <Topmost topmost={cards[cards.length - 1]} />
           {/* <Card card={cards[cards.length - 1]} /> */}
         </div>
       )}
