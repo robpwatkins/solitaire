@@ -82,7 +82,7 @@ img {
   justify-content: center;
   align-items: center;
   background: #1b6ca8;
-  border: 10px solid white;
+  border: 7px solid white;
   border-radius: 10px;
 }
 
@@ -126,5 +126,5 @@ img {
 }
 
 .origin {
-  box-shadow: 0 0 0 7px #f9da0a;
+  box-shadow: 0 0 0 6px #f9da0a;
 }
