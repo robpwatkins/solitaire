@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Card from './Card';
+// import Card from './Card';
+import Topmost from './Topmost';
 
 const Tableau = (props) => {
   const [isOrigin, setIsOrigin] = useState(false);
   const [isDestination, setIsDestination] = useState(false);
-  // const [topMost, setTopMost] = useState([]);
+  const [topmost, setTopmost] = useState([]);
   const {
     name,
     originCard,
@@ -16,6 +17,11 @@ const Tableau = (props) => {
     moveSuccessful,
     setMoveSuccessful    
   } = props;
+
+  useEffect(() => {
+    let newCards = cards;
+    setTopmost(newCards.splice(newCards.length - 1));
+  }, [cards]);
 
   useEffect(() => {
     if (!originCard && isOrigin) {
@@ -58,7 +64,7 @@ const Tableau = (props) => {
       setIsOrigin(false);
     }
   }
-  // console.log(name, cards);
+  console.log(name, topmost);
   let tblClass = [
     'tableau',
     isOrigin && 'origin',
@@ -70,7 +76,8 @@ const Tableau = (props) => {
     <div className={tblClass} onClick={handleClick}>
       {cards.length > 0 && (
         <>
-          <Card card={cards[cards.length - 1]} />
+          <Topmost topmost={topmost} />
+          {/* <Card card={cards[cards.length - 1]} /> */}
         </>
       )}
     </div>

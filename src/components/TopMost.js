@@ -1,7 +1,13 @@
 import React from 'react';
+import Card from './Card';
 
-const TopMost = () => {
-  
+const Topmost = ({ topmost }) => {
+  // console.log('Card', topmost);
+  return (
+    <div className="topmost">
+      
+    </div>
+  )
 }
 
-export default TopMost;
+export default Topmost;

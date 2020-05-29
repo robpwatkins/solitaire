@@ -4,7 +4,7 @@ import Waste from './Waste';
 import Foundation from './Foundation';
 import Tableau from './Tableau';
 
-const Solitaire = ({ deck }) => {
+const Solitaire = ({ deck, setDeck }) => {
   const [tableau1, setTableau1] = useState([]);
   const [tableau2, setTableau2] = useState([]);
   const [tableau3, setTableau3] = useState([]);

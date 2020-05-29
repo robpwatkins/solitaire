@@ -17,7 +17,7 @@ const Waste = (props) => {
       setIsOrigin(false);
       setOriginCard(null);
     }
-  }, [cards])
+  }, [cards]);
 
   useEffect(() => {
     if (!originCard && isOrigin) {
