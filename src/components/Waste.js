@@ -13,6 +13,13 @@ const Waste = (props) => {
   } = props;
 
   useEffect(() => {
+    if (isOrigin) {
+      setIsOrigin(false);
+      setOriginCard(null);
+    }
+  }, [cards])
+
+  useEffect(() => {
     if (!originCard && isOrigin) {
       setIsOrigin(false);
     }

@@ -21,7 +21,7 @@ const Stock = ({ stock, setStock, waste, setWaste }) => {
       onClick={handleClick}
     >
         {stock.length === 0 && (
-          <LoopIcon className="loop" style={{fontSize: "75px"}} />
+          <LoopIcon className="loop" style={{fontSize: "65px"}} />
         )}
     </div>
   )
