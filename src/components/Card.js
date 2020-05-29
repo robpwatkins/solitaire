@@ -8,7 +8,7 @@ const Card = (props) => {
     ((props.card.suit === 'Diamonds') || (props.card.suit === 'Hearts')) && 'red'
   ];
   cardClass = cardClass.join(' ');
-
+    // console.log('Card', props.card.rank);
   return (
     <div className={cardClass}>
       <div className="rank-top">

@@ -5,7 +5,6 @@ import Topmost from './Topmost';
 const Tableau = (props) => {
   const [isOrigin, setIsOrigin] = useState(false);
   const [isDestination, setIsDestination] = useState(false);
-  const [topmost, setTopmost] = useState([]);
   const {
     name,
     originCard,
@@ -17,11 +16,6 @@ const Tableau = (props) => {
     moveSuccessful,
     setMoveSuccessful    
   } = props;
-
-  useEffect(() => {
-    let newCards = cards;
-    setTopmost(newCards.splice(newCards.length - 1));
-  }, [cards]);
 
   useEffect(() => {
     if (!originCard && isOrigin) {
@@ -64,7 +58,7 @@ const Tableau = (props) => {
       setIsOrigin(false);
     }
   }
-  console.log(name, topmost);
+  console.log(name, cards);
   let tblClass = [
     'tableau',
     isOrigin && 'origin',
@@ -76,7 +70,7 @@ const Tableau = (props) => {
     <div className={tblClass} onClick={handleClick}>
       {cards.length > 0 && (
         <>
-          <Topmost topmost={topmost} />
+          <Topmost topmost={cards[cards.length - 1]} />
           {/* <Card card={cards[cards.length - 1]} /> */}
         </>
       )}
