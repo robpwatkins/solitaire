@@ -5,13 +5,16 @@
 }
 
 .App {
-  background-color: #50d890;
+  display: flex;
+  justify-content: center;
+  background-color: #2bc272;
   min-height: 100vh;
 }
 
 .solitaire {
   display: grid;
   width: 100vw;
+  max-width: 1000px;
   height: 100%;
   grid-template-columns: repeat(7, 1fr);
   gap: 15px;
@@ -23,14 +26,14 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  padding: 12px;
+  /* text-align: center; */
+  padding: 7px 3px;
   font-size: 21px;
   color: black;
   background: rgb(233, 233, 233);
-  border: 1px solid #88888875;
+  /* border: 1px solid #888888b2; */
   border-radius: 9px;
   -webkit-user-select: none;  
   -moz-user-select: none;    
@@ -38,8 +41,38 @@
   user-select: none;
 }
 
+.rank-top {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.rank-suit {
+  display: flex;
+  width: 25px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lil-guy {
+  width: 12px;
+  height: auto;
+  /* margin-top: -1px; */
+}
+
+img {
+  height: 50px;
+}
+
+.rank-bottom {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
 .red {
-  color: #da2d2d;
+  color: #CD0000;
 }
 
 .stock {
@@ -54,14 +87,14 @@
 }
 
 .stock-empty {
-  background: #50d890;
-  border: 2px dashed rgba(0, 0, 0, 0.212);
+  background: #2bc272;
+  border: 2px dashed #229b5b;
 }
 
 .loop {
   font-size: 100px;
-  color: #46be7e;
-  transform: scaleX(-1)
+  color: #229b5a;
+  transform: scaleX(-1);
 }
 
 .waste {
@@ -89,10 +122,9 @@
 }
 
 .empty {
-  border: 2px dashed rgba(0, 0, 0, 0.212);
+  border: 2px dashed #229b5b;
 }
 
 .origin {
-  /* border: 2px solid #88888800; */
-  box-shadow: 0 0 0 7px #fbe555;
+  box-shadow: 0 0 0 7px #f9da0a;
 }

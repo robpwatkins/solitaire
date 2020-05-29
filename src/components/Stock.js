@@ -18,9 +18,10 @@ const Stock = ({ stock, setStock, waste, setWaste }) => {
   return (
     <div 
       className={stock.length > 0 ? "stock" : "stock stock-empty"} 
-      onClick={handleClick}>
+      onClick={handleClick}
+    >
         {stock.length === 0 && (
-          <LoopIcon className="loop" style={{fontSize: "100px"}} />
+          <LoopIcon className="loop" style={{fontSize: "75px"}} />
         )}
     </div>
   )

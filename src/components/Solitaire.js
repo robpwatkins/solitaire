@@ -71,20 +71,16 @@ const Solitaire = ({ deck }) => {
       if (destination === 'foundation-empty') {
         if (originCard.rank === 'A') {
           setMoveSuccessful(true);
-          // setOriginCard(null);
           setDestination(null);
         } else {
-          // setOriginCard(null);
           setDestination(null);
         }
       } else
       if (destination === 'tableau-empty') {
         if (originCard.rank === 'K') {
           setMoveSuccessful(true);
-          // setOriginCard(null);
           setDestination(null);
         } else {
-          // setOriginCard(null);
           setDestination(null);
         }
       }
@@ -105,11 +101,9 @@ const Solitaire = ({ deck }) => {
           } else destinationColor = 'b';
           if (originColor === destinationColor) {
             setMoveSuccessful(true);
-            // setOriginCard(null);
             setDestinationCard(null);
             setDestination(null);
           } else {
-            // setOriginCard(null);
             setDestinationCard(null);
             setDestination(null);
           }
@@ -149,7 +143,6 @@ const Solitaire = ({ deck }) => {
       }
     }
   }, [originCard, destination, destinationCard]);
-
   // console.log(stock.length, waste.length);
   return (
     <div className="solitaire">
