@@ -34,6 +34,7 @@ const Tableau = (props) => {
       setMoveSuccessful(false);
       setIsOrigin(false);
       setCardPosition(cardPosition => cardPosition - 1);
+      console.log(cards.length, cardPosition);
     } else
     if (moveSuccessful && isDestination) {
       setCards([...cards, originCard]);
