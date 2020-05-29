@@ -12,12 +12,12 @@ const Waste = (props) => {
     setMoveSuccessful
   } = props;
 
-  useEffect(() => {
-    if (isOrigin) {
-      setIsOrigin(false);
-      setOriginCard(null);
-    }
-  }, [cards]);
+  // useEffect(() => {
+  //   if (isOrigin) {
+  //     setIsOrigin(false);
+  //     setOriginCard(null);
+  //   }
+  // }, [cards]);
 
   useEffect(() => {
     if (!originCard && isOrigin) {

@@ -38,14 +38,19 @@
 }
 
 .topmost {
-  position: absolute;
+  position: relative;
   width: 100%;
-  margin-top: -180px;
+  margin-top: -160px;
   border-radius: 10px;
   z-index: 1;
 }
 
+.top {
+  margin-top: -180px;
+}
+
 .topmost:nth-child(1) {
+  position: relative;
   margin: 0;
 }
 

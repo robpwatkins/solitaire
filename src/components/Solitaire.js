@@ -210,6 +210,7 @@ const Solitaire = ({ deck, setDeck }) => {
         setOriginCard={setOriginCard}
         cards={tableau1}
         setCards={setTableau1}
+        cardsLength={0}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
@@ -221,6 +222,7 @@ const Solitaire = ({ deck, setDeck }) => {
         setOriginCard={setOriginCard}
         cards={tableau2}
         setCards={setTableau2}
+        cardsLength={1}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
@@ -232,6 +234,7 @@ const Solitaire = ({ deck, setDeck }) => {
         setOriginCard={setOriginCard}
         cards={tableau3}
         setCards={setTableau3}
+        cardsLength={2}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
@@ -243,6 +246,7 @@ const Solitaire = ({ deck, setDeck }) => {
         setOriginCard={setOriginCard}
         cards={tableau4}
         setCards={setTableau4}
+        cardsLength={3}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
@@ -254,6 +258,7 @@ const Solitaire = ({ deck, setDeck }) => {
         setOriginCard={setOriginCard}
         cards={tableau5}
         setCards={setTableau5}
+        cardsLength={4}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
@@ -265,6 +270,7 @@ const Solitaire = ({ deck, setDeck }) => {
         setOriginCard={setOriginCard}
         cards={tableau6}
         setCards={setTableau6}
+        cardsLength={5}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}
@@ -276,6 +282,7 @@ const Solitaire = ({ deck, setDeck }) => {
         setOriginCard={setOriginCard}
         cards={tableau7}
         setCards={setTableau7}
+        cardsLength={6}
         setDestination={setDestination}
         setDestinationCard={setDestinationCard}
         moveSuccessful={moveSuccessful}

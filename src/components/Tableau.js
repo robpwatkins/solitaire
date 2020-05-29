@@ -6,22 +6,19 @@ import Topmost from './Topmost';
 const Tableau = (props) => {
   const [isOrigin, setIsOrigin] = useState(false);
   const [isDestination, setIsDestination] = useState(false);
-  const [topCards, setTopCards] = useState([]);
+  const [cardPosition, setCardPosition] = useState(props.cardsLength);
   const {
     name,
     originCard,
     setOriginCard,
     cards,
     setCards,
+    cardsLength,
     setDestination,
     setDestinationCard,
     moveSuccessful,
     setMoveSuccessful    
   } = props;
-
-  useEffect(() => {
-    setTopCards('heyoo');
-  }, [])
 
   useEffect(() => {
     if (!originCard && isOrigin) {
@@ -36,9 +33,11 @@ const Tableau = (props) => {
       setCards(newCards);
       setMoveSuccessful(false);
       setIsOrigin(false);
+      setCardPosition(cardPosition => cardPosition - 1);
     } else
     if (moveSuccessful && isDestination) {
       setCards([...cards, originCard]);
+      // setCardPosition(cardPosition => cardPosition + 1)
       setOriginCard(null);
       setMoveSuccessful(false);
     }
@@ -64,13 +63,13 @@ const Tableau = (props) => {
       setIsOrigin(false);
     }
   }
-  console.log(name, topCards);
+  // console.log(name, topIndex);
   // let tblClass = [
   //   'tableau',
   //   cards.length === 0 && 'empty'
   // ]
   // tblClass = tblClass.join(' ')
-
+  // console.log(name, cardPosition);
   return (
     <div 
       className={cards.length > 0 ? "tableau" : "tableau empty"} 
@@ -79,11 +78,16 @@ const Tableau = (props) => {
       {cards.length > 0 && (
         <div className="tableau">
           {cards.map((card, index) => {
-            if (index === cards.length - 1) {
+            if (index === cardPosition) {
               return (
-                <Topmost topmost={cards[cards.length - 1]} isOrigin={isOrigin} key={index} />
+                <Topmost topmost={cards[index]} isOrigin={isOrigin} key={index} name="top" />
               )        
             } else
+            if (index > cardPosition) {
+              return (
+                <Topmost topmost={cards[index]} isOrigin={isOrigin} key={index} name="bottom" />
+              )
+            }
             return <Stack key={index} />
           })}
         </div>
