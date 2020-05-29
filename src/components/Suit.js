@@ -4,10 +4,24 @@ import Clubs from '../img/Clubs.png';
 import Diamonds from '../img/Diamonds.png';
 import Hearts from '../img/Hearts.png';
 
-const Suit = ({ suit }) => {
-  console.log(suit);
+const Suit = ({ suit, name }) => {
+  console.log(suit, name);
   return (
-    <img src={suit} alt=""/>
+    <>
+      {
+        suit === 'Spades'
+        ? <img key="Spades" src={Spades} alt="" className={name === "lil" && name} />
+        : [
+          suit === 'Clubs'
+          ? <img key="Clubs" src={Clubs} alt="" className={name === "lil" && name} />
+          : [
+            suit === 'Diamonds'
+            ? <img key="Diamonds" src={Diamonds} alt="" className={name === "lil" && name} />
+            : <img key="Hearts" src={Hearts} alt="" className={name === "lil" && name} />
+          ]
+        ]
+      }
+    </>
   )
 }
 
