@@ -60,24 +60,27 @@ const Tableau = (props) => {
     }
   }
   console.log(name, cards);
-  let tblClass = [
-    'tableau',
-    cards.length === 0 && 'empty'
-  ]
-  tblClass = tblClass.join(' ')
+  // let tblClass = [
+  //   'tableau',
+  //   cards.length === 0 && 'empty'
+  // ]
+  // tblClass = tblClass.join(' ')
 
   return (
-    <div className={tblClass} onClick={handleClick}>
+    <div 
+      className={cards.length > 0 ? "tableau" : "tableau empty"} 
+      onClick={handleClick}
+    >
       {cards.length > 0 && (
         <div className="tableau">
-          {cards.map((card) => {
+          {cards.map((card, index) => {
+            if (index === cards.length - 1) {
+              return (
+                <Topmost topmost={cards[cards.length - 1]} isOrigin={isOrigin} />
+              )        
+            } else
             return <Stack />
           })}
-          <Topmost 
-            topmost={cards[cards.length - 1]} 
-            isOrigin={isOrigin}
-          />
-          {/* <Card card={cards[cards.length - 1]} /> */}
         </div>
       )}
     </div>
