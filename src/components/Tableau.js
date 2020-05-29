@@ -6,6 +6,7 @@ import Topmost from './Topmost';
 const Tableau = (props) => {
   const [isOrigin, setIsOrigin] = useState(false);
   const [isDestination, setIsDestination] = useState(false);
+  const [topCards, setTopCards] = useState([]);
   const {
     name,
     originCard,
@@ -17,6 +18,10 @@ const Tableau = (props) => {
     moveSuccessful,
     setMoveSuccessful    
   } = props;
+
+  useEffect(() => {
+    setTopCards('heyoo');
+  }, [])
 
   useEffect(() => {
     if (!originCard && isOrigin) {
@@ -59,7 +64,7 @@ const Tableau = (props) => {
       setIsOrigin(false);
     }
   }
-  console.log(name, cards);
+  console.log(name, topCards);
   // let tblClass = [
   //   'tableau',
   //   cards.length === 0 && 'empty'
@@ -76,10 +81,10 @@ const Tableau = (props) => {
           {cards.map((card, index) => {
             if (index === cards.length - 1) {
               return (
-                <Topmost topmost={cards[cards.length - 1]} isOrigin={isOrigin} />
+                <Topmost topmost={cards[cards.length - 1]} isOrigin={isOrigin} key={index} />
               )        
             } else
-            return <Stack />
+            return <Stack key={index} />
           })}
         </div>
       )}
