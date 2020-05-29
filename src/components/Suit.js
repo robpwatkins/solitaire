@@ -5,7 +5,7 @@ import Diamonds from '../img/Diamonds.png';
 import Hearts from '../img/Hearts.png';
 
 const Suit = ({ suit, name }) => {
-  console.log(suit, name);
+  // console.log(suit, name);
   return (
     <>
       {

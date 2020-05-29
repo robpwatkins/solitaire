@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import Card from './Card';
+import Stack from './Stack';
 import Topmost from './Topmost';
 
 const Tableau = (props) => {
@@ -69,10 +70,12 @@ const Tableau = (props) => {
   return (
     <div className={tblClass} onClick={handleClick}>
       {cards.length > 0 && (
-        <>
-          <Topmost topmost={cards[cards.length - 1]} />
+        <div className="tableau">
+          <Stack />
+          <Stack />
+          {/* <Topmost topmost={cards[cards.length - 1]} /> */}
           {/* <Card card={cards[cards.length - 1]} /> */}
-        </>
+        </div>
       )}
     </div>
   )
