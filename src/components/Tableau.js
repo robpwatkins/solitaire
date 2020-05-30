@@ -31,22 +31,38 @@ const Tableau = (props) => {
       setCardIndex(null);
     }
     if (moveSuccessful && isOrigin) {
+      if (cardIndex === cardPosition) {
+        console.log('heyoo');
+        setCardPosition(cardPosition => cardPosition - 1)
+      }
       let newCards = cards.slice();
-      console.log(cardIndex);
       newCards.splice(cardIndex);
       setCards(newCards);
       setMoveSuccessful(false);
       setIsOrigin(false);
+      // if (cardPosition === cards.length - 1) {
+      //   setCardPosition(cardPosition => cardPosition = newCards.length - 1);
+      // } else {
+      //   setCardPosition(cardIndex - 1);
+      //   console.log(cardIndex);
+      // };
       // if (cardPosition > cards.length) return;
-      setCardPosition(cardPosition => cardPosition - 1);
+      // if (originCard.length === 1) {
+      //   setCardPosition(cardPosition => cardPosition - 1);
+      // } else {
+      //   setCardPosition(cardPosition => cardPosition + originCard.length - 1);
+      // }
       setCardIndex(null);
     } else
     if (moveSuccessful && isDestination) {
       console.log(originCard);
       setCards([...cards, ...originCard]);
-      setOriginCard(null);
       setMoveSuccessful(false);
       setCardIndex(null);
+      if (originCard.length > 1) {
+      //  setCardPosition(cardPosition => cards.length - 1);
+      }
+      setOriginCard(null);
     }
   }, [moveSuccessful, cards, isDestination, isOrigin, name, originCard, setCards, setMoveSuccessful, setOriginCard]);
 
@@ -72,7 +88,7 @@ const Tableau = (props) => {
       setCardIndex(null);
     }
   }
-  // console.log(name, cardIndex);
+  // console.log(name, cardPosition);
   return (
     <div 
       className={cards.length > 0 ? "tableau" : "tableau empty"} 

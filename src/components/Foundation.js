@@ -31,7 +31,7 @@ const Foundation = (props) => {
       setIsOrigin(false);
     } else
     if (moveSuccessful && isDestination) {
-      setCards([...cards, originCard]);
+      setCards([...cards, ...originCard]);
       setOriginCard(null);
       setMoveSuccessful(false);
     }
@@ -42,7 +42,7 @@ const Foundation = (props) => {
       if (cards.length === 0) {
         return;
       } else {
-        setOriginCard(cards[cards.length - 1]);
+        setOriginCard([cards[cards.length - 1]]);
         setIsOrigin(true);
       }
     } else

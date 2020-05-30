@@ -34,7 +34,7 @@ const Waste = (props) => {
 
   const handleClick = () => {
     if (!originCard) {
-      setOriginCard(cards[cards.length - 1]);
+      setOriginCard([cards[cards.length - 1]]);
       setIsOrigin(true);
     }
     if (originCard) {
