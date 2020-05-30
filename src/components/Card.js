@@ -4,13 +4,14 @@ import Suit from './Suit';
 const Card = (props) => {
 
   const handleClick = event => {
-    props.setCardIndex(props.index);
+    props.setCardIndex && props.setCardIndex(props.index);
+    // console.log(props.cardIndex);
   }
-
+  console.log(props.cardIndex);
   let cardClass = [
     'card',
     ((props.card.suit === 'Diamonds') || (props.card.suit === 'Hearts')) && 'red',
-    props.isOrigin && 'origin',
+    (props.isOrigin && (props.index >= props.cardIndex)) && 'origin',
     (props.name && props.name.includes('tableau')) && 'tableau',
     (props.name && props.name.includes('top')) && 'top',
     (props.name && props.name.includes('bottom')) && 'bottom'

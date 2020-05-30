@@ -24,9 +24,11 @@ const Tableau = (props) => {
   useEffect(() => {
     if (!originCard && isOrigin) {
       setIsOrigin(false);
+      setCardIndex(null);
     }
     if (!originCard && isDestination) {
       setIsDestination(false);
+      setCardIndex(null);
     }
     if (moveSuccessful && isOrigin) {
       let newCards = cards;
@@ -36,11 +38,13 @@ const Tableau = (props) => {
       setIsOrigin(false);
       if (cardPosition > cards.length) return;
       setCardPosition(cardPosition => cards.length - 1);
+      setCardIndex(null);
     } else
     if (moveSuccessful && isDestination) {
       setCards([...cards, originCard]);
       setOriginCard(null);
       setMoveSuccessful(false);
+      setCardIndex(null);
     }
   }, [moveSuccessful, cards, isDestination, isOrigin, name, originCard, setCards, setMoveSuccessful, setOriginCard]);
 
@@ -63,9 +67,10 @@ const Tableau = (props) => {
     if (originCard && isOrigin) {
       setOriginCard(null);
       setIsOrigin(false);
+      setCardIndex(null);
     }
   }
-  console.log(name, cardIndex);
+  // console.log(name, cardIndex);
   return (
     <div 
       className={cards.length > 0 ? "tableau" : "tableau empty"} 
@@ -78,9 +83,10 @@ const Tableau = (props) => {
               return (
                 <Card 
                   card={cards[index]} 
-                  isOrigin={index === cards.length - 1 && isOrigin} 
+                  isOrigin={/* index === cards.length - 1 &&  */isOrigin} 
                   key={index} 
                   index={index}
+                  cardIndex={cardIndex}
                   setCardIndex={setCardIndex}
                   name="tableau top"
                 />
@@ -90,9 +96,11 @@ const Tableau = (props) => {
               return (
                 <Card 
                   card={cards[index]} 
-                  isOrigin={index === cards.length - 1 && isOrigin} 
+                  isOrigin={/* index === cards.length - 1 &&  */isOrigin} 
                   key={index} 
                   index={index}
+                  cardIndex={cardIndex}
+                  setCardIndex={setCardIndex}
                   name="tableau bottom" 
                 />
               )
