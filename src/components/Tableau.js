@@ -38,7 +38,6 @@ const Tableau = (props) => {
     } else
     if (moveSuccessful && isDestination) {
       setCards([...cards, originCard]);
-      // setCardPosition(cardPosition => cardPosition + 1)
       setOriginCard(null);
       setMoveSuccessful(false);
     }
@@ -81,12 +80,22 @@ const Tableau = (props) => {
           {cards.map((card, index) => {
             if (index === cardPosition) {
               return (
-                <Topmost topmost={cards[index]} isOrigin={isOrigin} key={index} name="top" />
+                <Topmost 
+                  topmost={cards[index]} 
+                  isOrigin={index === cards.length - 1 && isOrigin} 
+                  key={index} 
+                  name="top"
+                />
               )        
             } else
             if (index > cardPosition) {
               return (
-                <Topmost topmost={cards[index]} isOrigin={isOrigin} key={index} name="bottom" />
+                <Topmost 
+                  topmost={cards[index]} 
+                  isOrigin={index === cards.length - 1 && isOrigin} 
+                  key={index} 
+                  name="bottom" 
+                />
               )
             }
             return <Stack key={index} />
