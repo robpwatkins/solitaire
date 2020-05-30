@@ -3,14 +3,23 @@ import Suit from './Suit';
 
 const Card = (props) => {
 
+  const handleClick = event => {
+    props.setCardIndex(props.index);
+  }
+
   let cardClass = [
     'card',
-    ((props.card.suit === 'Diamonds') || (props.card.suit === 'Hearts')) && 'red'
+    ((props.card.suit === 'Diamonds') || (props.card.suit === 'Hearts')) && 'red',
+    props.isOrigin && 'origin',
+    (props.name && props.name.includes('tableau')) && 'tableau',
+    (props.name && props.name.includes('top')) && 'top',
+    (props.name && props.name.includes('bottom')) && 'bottom'
   ];
+  
   cardClass = cardClass.join(' ');
-    // console.log('Card', props.card.rank);
+    // console.log('Card', props.index);
   return (
-    <div className={cardClass}>
+    <div className={cardClass} value={props.index} onClick={handleClick}>
       <div className="rank-top">
         <div className="rank-suit">
           <span>{props.card.rank}</span>

@@ -68,7 +68,7 @@ const Foundation = (props) => {
     cards.length === 0 && 'empty'
   ]
   fndClass = fndClass.join(' ');
-  console.log(cards);
+  // console.log(cards);
   return (
     <div className={fndClass} onClick={handleClick}>
       {cards.length > 0 && (
