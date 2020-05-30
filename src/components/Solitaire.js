@@ -87,7 +87,6 @@ const Solitaire = ({ deck, setDeck }) => {
     } else
     if (originCard && destinationCard) {
       if (destination === 'foundation') {
-        console.log(originCard.rank, destinationCard.rank);
         if ((originCard.rank === 2 && destinationCard.rank === 'A') ||
         (originCard.rank === 'Q' && destinationCard.rank === 'J') ||
         (originCard.rank === 'K' && destinationCard.rank === 'Q') ||

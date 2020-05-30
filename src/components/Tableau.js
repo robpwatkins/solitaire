@@ -63,13 +63,7 @@ const Tableau = (props) => {
       setIsOrigin(false);
     }
   }
-  // console.log(name, topIndex);
-  // let tblClass = [
-  //   'tableau',
-  //   cards.length === 0 && 'empty'
-  // ]
-  // tblClass = tblClass.join(' ')
-  // console.log(name, cardPosition);
+
   return (
     <div 
       className={cards.length > 0 ? "tableau" : "tableau empty"} 
