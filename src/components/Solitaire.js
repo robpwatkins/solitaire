@@ -142,6 +142,12 @@ const Solitaire = ({ deck, setDeck }) => {
         }
       }
     }
+    if (foundation1.length === 13 && 
+      foundation2.length === 13 && 
+      foundation3.length ===13 &&
+      foundation4.length === 13) {
+        alert('You have won.');
+      }
   }, [originCard, destination, destinationCard]);
   // console.log(originCard, moveSuccessful);
   return (
