@@ -149,13 +149,9 @@ const Solitaire = ({ deck, setDeck }) => {
         alert('You have won.');
       }
   }, [originCard, destination, destinationCard]);
-  // console.log(originCard, moveSuccessful);
+
   return (
     <div className="gameboard">
-      {/* <div className="rules">
-        <h3>Click a card and then a destination to make a move.</h3>
-        <h3>Only single topmost cards are playable.</h3>
-      </div> */}
       <div className="solitaire">
         <Stock 
           stock={stock}

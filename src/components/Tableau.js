@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import Stack from './Stack';
-// import Topmost from './Topmost';
 
 const Tableau = (props) => {
   const [isOrigin, setIsOrigin] = useState(false);
@@ -63,7 +62,7 @@ const Tableau = (props) => {
       setCardIndex(null);
     }
   }
-  // console.log(name, cardPosition);
+
   return (
     <div 
       className={cards.length > 0 ? "tableau" : "tableau empty"} 

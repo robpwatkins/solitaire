@@ -26,7 +26,7 @@ function App() {
     }
     return buildDeck;
   }
-  // console.log(deck);
+
   return (
     <div className="App">
       <Solitaire deck={deck} />

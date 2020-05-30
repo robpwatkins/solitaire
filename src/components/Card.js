@@ -24,7 +24,7 @@ const Card = (props) => {
       }
     }
   }
-  
+
   let cardClass = [
     'card',
     ((props.card.suit === 'Diamonds') || (props.card.suit === 'Hearts')) && 'red',
@@ -35,7 +35,7 @@ const Card = (props) => {
   ];
   
   cardClass = cardClass.join(' ');
-    // console.log('Card', props.originCard);
+
   return (
     <div className={cardClass} value={props.index} onClick={handleClick}>
       <div className="rank-top">

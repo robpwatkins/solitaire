@@ -50,8 +50,6 @@ const Waste = (props) => {
   ];
 
   wasteClass = wasteClass.join(' ');
-  
-  // console.log(cards)
   return (
     <div 
       className={wasteClass}
