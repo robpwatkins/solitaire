@@ -22,56 +22,31 @@ const Tableau = (props) => {
   } = props;
 
   useEffect(() => {
-    // if (!originCard && isOrigin) {
-    //   setIsOrigin(false);
-    //   setCardIndex(null);
-    // }
     if (!originCard && isDestination) {
       setIsDestination(false);
       setCardIndex(null);
     }
     if (moveSuccessful && isOrigin) {
-      if (cardIndex === cardPosition) {
-        console.log('heyoo');
-        setCardPosition(cardPosition => cardPosition - 1)
-      }
       let newCards = cards.slice();
       newCards.splice(cardIndex);
       setCards(newCards);
       setMoveSuccessful(false);
       setIsOrigin(false);
-      // if (cardPosition === cards.length - 1) {
-      //   setCardPosition(cardPosition => cardPosition = newCards.length - 1);
-      // } else {
-      //   setCardPosition(cardIndex - 1);
-      //   console.log(cardIndex);
-      // };
-      // if (cardPosition > cards.length) return;
-      // if (originCard.length === 1) {
-      //   setCardPosition(cardPosition => cardPosition - 1);
-      // } else {
-      //   setCardPosition(cardPosition => cardPosition + originCard.length - 1);
-      // }
       setCardIndex(null);
+      if (cardIndex === cardPosition) {
+        setCardPosition(cardPosition => cardPosition - 1)
+      }
     } else
     if (moveSuccessful && isDestination) {
       console.log(originCard);
       setCards([...cards, ...originCard]);
       setMoveSuccessful(false);
       setCardIndex(null);
-      if (originCard.length > 1) {
-      //  setCardPosition(cardPosition => cards.length - 1);
-      }
       setOriginCard(null);
     }
   }, [moveSuccessful, cards, isDestination, isOrigin, name, originCard, setCards, setMoveSuccessful, setOriginCard]);
 
   const handleClick = (event) => {
-    // console.log(event.target.getAttribute('value'))
-    // if (!originCard) {
-    //   setOriginCard(cards[cards.length - 1]);
-    //   setIsOrigin(true);
-    // } else
     if (originCard && !isOrigin) {
       if (cards.length === 0) {
         setDestination('tableau-empty');
@@ -97,7 +72,6 @@ const Tableau = (props) => {
       {cards.length > 0 && (
         <div className="tableau">
           {cards.map((card, index) => {
-            // console.log(name, cardPosition)
             if (index >= cardPosition) {
               return (
                 <Card 

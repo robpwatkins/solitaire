@@ -88,6 +88,7 @@ const Solitaire = ({ deck, setDeck }) => {
     if (originCard && destinationCard) {
       if (destination === 'foundation') {
         if ((originCard[0].rank === 2 && destinationCard.rank === 'A') ||
+        (originCard[0].rank === 'J' && destinationCard.rank === 10) ||
         (originCard[0].rank === 'Q' && destinationCard.rank === 'J') ||
         (originCard[0].rank === 'K' && destinationCard.rank === 'Q') ||
         (originCard[0].rank === destinationCard.rank + 1)) {

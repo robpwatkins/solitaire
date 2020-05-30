@@ -21,12 +21,10 @@ const Card = (props) => {
         props.setIsOrigin(true);
         let newCards = props.cards.slice();
         props.setOriginCard(newCards.splice(props.index));
-        // console.log(newCards.splice(newCards.length - 1));
-        // newCards.splice(props.cards.length - 1);
       }
     }
   }
-  // console.log(props.cardIndex);
+  
   let cardClass = [
     'card',
     ((props.card.suit === 'Diamonds') || (props.card.suit === 'Hearts')) && 'red',
