@@ -22,26 +22,28 @@ const Tableau = (props) => {
   } = props;
 
   useEffect(() => {
-    if (!originCard && isOrigin) {
-      setIsOrigin(false);
-      setCardIndex(null);
-    }
+    // if (!originCard && isOrigin) {
+    //   setIsOrigin(false);
+    //   setCardIndex(null);
+    // }
     if (!originCard && isDestination) {
       setIsDestination(false);
       setCardIndex(null);
     }
     if (moveSuccessful && isOrigin) {
-      let newCards = cards;
-      newCards.pop();
+      let newCards = cards.slice();
+      console.log(cardIndex);
+      newCards.splice(cardIndex);
       setCards(newCards);
       setMoveSuccessful(false);
       setIsOrigin(false);
-      if (cardPosition > cards.length) return;
-      setCardPosition(cardPosition => cards.length - 1);
+      // if (cardPosition > cards.length) return;
+      setCardPosition(cardPosition => cardPosition - 1);
       setCardIndex(null);
     } else
     if (moveSuccessful && isDestination) {
-      setCards([...cards, originCard]);
+      console.log(originCard);
+      setCards([...cards, ...originCard]);
       setOriginCard(null);
       setMoveSuccessful(false);
       setCardIndex(null);
@@ -50,10 +52,10 @@ const Tableau = (props) => {
 
   const handleClick = (event) => {
     // console.log(event.target.getAttribute('value'))
-    if (!originCard) {
-      setOriginCard(cards[cards.length - 1]);
-      setIsOrigin(true);
-    } else
+    // if (!originCard) {
+    //   setOriginCard(cards[cards.length - 1]);
+    //   setIsOrigin(true);
+    // } else
     if (originCard && !isOrigin) {
       if (cards.length === 0) {
         setDestination('tableau-empty');
@@ -79,31 +81,23 @@ const Tableau = (props) => {
       {cards.length > 0 && (
         <div className="tableau">
           {cards.map((card, index) => {
-            if (index === cardPosition) {
+            // console.log(name, cardPosition)
+            if (index >= cardPosition) {
               return (
                 <Card 
+                  cards={cards}
                   card={cards[index]} 
-                  isOrigin={/* index === cards.length - 1 &&  */isOrigin} 
+                  isOrigin={isOrigin} 
+                  setIsOrigin={setIsOrigin}
+                  originCard={originCard}
+                  setOriginCard={setOriginCard}
                   key={index} 
                   index={index}
                   cardIndex={cardIndex}
                   setCardIndex={setCardIndex}
-                  name="tableau top"
+                  name={index === cardPosition ? "tableau top" : index > cardPosition && "tableau bottom"}
                 />
               )        
-            } else
-            if (index > cardPosition) {
-              return (
-                <Card 
-                  card={cards[index]} 
-                  isOrigin={/* index === cards.length - 1 &&  */isOrigin} 
-                  key={index} 
-                  index={index}
-                  cardIndex={cardIndex}
-                  setCardIndex={setCardIndex}
-                  name="tableau bottom" 
-                />
-              )
             }
             return <Stack key={index} />
           })}

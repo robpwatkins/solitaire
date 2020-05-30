@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Suit from './Suit';
 
 const Card = (props) => {
 
+  useEffect(() => {
+    if (props.setOrigin) {
+      if (!props.originCard && props.isOrigin) {
+        props.setIsOrigin(false);
+        props.setCardIndex(null);
+      }
+    }
+  })
+
   const handleClick = event => {
-    props.setCardIndex && props.setCardIndex(props.index);
-    // console.log(props.cardIndex);
+    if (props.setCardIndex) {
+      props.setCardIndex(props.index);
+    }
+    if (props.setOriginCard) {
+      if (!props.originCard) {
+        props.setIsOrigin(true);
+        let newCards = props.cards.slice();
+        props.setOriginCard(newCards.splice(props.index));
+        // console.log(newCards.splice(newCards.length - 1));
+        // newCards.splice(props.cards.length - 1);
+      }
+    }
   }
-  console.log(props.cardIndex);
+  // console.log(props.cardIndex);
   let cardClass = [
     'card',
     ((props.card.suit === 'Diamonds') || (props.card.suit === 'Hearts')) && 'red',
@@ -18,7 +37,7 @@ const Card = (props) => {
   ];
   
   cardClass = cardClass.join(' ');
-    // console.log('Card', props.index);
+    // console.log('Card', props.originCard);
   return (
     <div className={cardClass} value={props.index} onClick={handleClick}>
       <div className="rank-top">

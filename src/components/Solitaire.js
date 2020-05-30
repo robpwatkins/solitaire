@@ -113,12 +113,12 @@ const Solitaire = ({ deck, setDeck }) => {
         }
       }
       if (destination === 'tableau') {
-        if ((originCard.rank === 10 && destinationCard.rank === 'J') ||
-        (originCard.rank === 'J' && destinationCard.rank === 'Q') ||
-        (originCard.rank === 'Q' && destinationCard.rank === 'K') || 
-        (originCard.rank === destinationCard.rank - 1)) {
+        if ((originCard[0].rank === 10 && destinationCard.rank === 'J') ||
+        (originCard[0].rank === 'J' && destinationCard.rank === 'Q') ||
+        (originCard[0].rank === 'Q' && destinationCard.rank === 'K') || 
+        (originCard[0].rank === destinationCard.rank - 1)) {
           let originColor, destinationColor;
-          if (originCard.suit === 'Hearts' || originCard.suit === 'Diamonds') {
+          if (originCard[0].suit === 'Hearts' || originCard.suit === 'Diamonds') {
             originColor = 'r';
           } else originColor = 'b';
           if (destinationCard.suit === 'Hearts' || destinationCard.suit === 'Diamonds') {
@@ -142,7 +142,7 @@ const Solitaire = ({ deck, setDeck }) => {
       }
     }
   }, [originCard, destination, destinationCard]);
-  // console.log(stock.length, waste.length);
+  console.log(originCard, moveSuccessful);
   return (
     <div className="gameboard">
       {/* <div className="rules">
